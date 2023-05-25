@@ -1,4 +1,12 @@
 #include "monty.h"
+/**
+ * main - check the code
+ * @argv: stack
+ * @argc: number
+ * Return: Always 0.
+ */
+void print_params_error(void);
+void print_open_error(char *filename);
 int main(int argv, char *argc[])
 {
 int fd, i = 0, q = 0, m = 0, v = 0, k = 0;
@@ -12,7 +20,9 @@ if (argv == 2)
 {
 fd = open(argc[1], O_RDONLY);
 if (fd == -1)
-exit(1);
+print_open_error(argc[1]);
+else
+{
 t = malloc(sizeof(instruction_t));
 rd = read(fd, buf, 1024);
 if (t)
@@ -61,5 +71,32 @@ free(t);
 }
 }
 }
+}
+else
+print_params_error();
 return (0);
 }
+
+
+/**
+ * print_params_error - check the code
+ * @params: number
+ * Return: Always 0.
+ */
+void print_params_error(void)
+{
+printf("USAGE: monty file\n");
+exit(EXIT_FAILURE);
+}
+
+/**
+ * print_open_error - check the code
+ * @filename: number
+ * Return: Always 0.
+ */
+void print_open_error(char *filename)
+{
+fprintf(stderr, "Error: Can't open file %s\n", filename);
+exit(EXIT_FAILURE);
+}
+

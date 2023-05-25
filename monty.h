@@ -47,4 +47,6 @@ void sub(stack_t **f, unsigned int g);
 void divv(stack_t **h, unsigned int l);
 void mod(stack_t **o, unsigned int p);
 void mul(stack_t **r, unsigned int s);
+void opcode_error(char *opcode, int line);
+int check_number(char *c);
 #endif

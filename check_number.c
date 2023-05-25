@@ -12,5 +12,7 @@ int neg = -1;
 n = strtol(c, &end, 10);
 if (*end != '\0')
 return ((unsigned int)neg);
+if (end == c)
+return ((unsigned int)neg);
 return ((unsigned int)n);
 }

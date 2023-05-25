@@ -39,17 +39,51 @@ exit(EXIT_FAILURE);
 else if (strcmp(opcode, pal) == 0)
 instruct->f = &pall;
 else if (strcmp(opcode, pin) == 0)
+if (get_total(j) > 0)
 instruct->f = &pint;
+else
+{
+fprintf(stderr, "L%d: can't pint, stack empty\n", p);
+exit(EXIT_FAILURE);
+}
 else if (strcmp(opcode, po) == 0)
+{
+if (get_total(j) >= 2)
 instruct->f = &pop;
+if (get_total(j) == 0)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", p);
+exit(EXIT_FAILURE);
+}
+if (get_total(j) == 1)
+instruct->f = &nop;
+}
 else if (strcmp(opcode, swa) == 0)
+if (get_total(j) >= 2)
 instruct->f = &swap;
+else
+{
+fprintf(stderr, "L%d: can't swap, stack too short\n", p);
+exit(EXIT_FAILURE);
+}
 else if (strcmp(opcode, ad) == 0)
+if (get_total(j) >= 2)
 instruct->f = &add;
+else
+{
+fprintf(stderr, "L%d: can't add, stack too short\n", p);
+exit(EXIT_FAILURE);
+}
 else if (strcmp(opcode, no) == 0)
 instruct->f = &nop;
 else if (strcmp(opcode, su) == 0)
+if (get_total(j) >= 2)
 instruct->f = &sub;
+else
+{
+fprintf(stderr, "L%d: can't sub, stack too short\n", p);
+exit(EXIT_FAILURE);
+}
 else if (strcmp(opcode, di) == 0)
 instruct->f = &divv;
 else if (strcmp(opcode, mo) == 0)

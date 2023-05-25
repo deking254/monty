@@ -5,11 +5,11 @@
  * @h: stack
  * Return: Always 0.
  */
-void pop(stack_t **h, __attribute__((unused))unsigned int y)
+void pop(stack_t **h, __attribute__ ((unused))unsigned int y)
 {
 stack_t *top = *h;
 stack_t *next;
-if (top)
+if (get_total(h) >= 2)
 {
 next = top->next;
 free(next->prev);

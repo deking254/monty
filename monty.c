@@ -72,7 +72,7 @@ free(t);
 }
 }
 }
-else
+if (argc != 2)
 print_params_error();
 return (0);
 }

@@ -72,8 +72,8 @@ free(t);
 }
 }
 }
-if (argc != 2)
-print_params_error();
+if (argv != 2)
+printf("were\n");
 return (0);
 }
 

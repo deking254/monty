@@ -25,7 +25,7 @@ else
 {
 t = malloc(sizeof(instruction_t));
 rd = read(fd, buf, 1024);
-if (t)
+if (t != NULL)
 {
 if (rd != -1)
 {
@@ -34,13 +34,11 @@ while (buf[i] > 0 )
 if (buf[i] == '\n')
 {
 command[q] = '\0';
-v++;
-}
+v++; }
 else
 command[q] = buf[i];
 q++;
-i++;
-}
+i++; }
 while (m < q)
 {
 if (m == 0)
@@ -49,8 +47,7 @@ t->opcode = command;
 t->f = NULL;
 handle_input(&t, &j, b);
 b++;
-k++;
-}
+k++; }
 if (command[m] == '\0')
 {
 m += 1;
@@ -60,27 +57,23 @@ t->opcode = command + m;
 t->f = NULL;
 handle_input(&t, &j, b);
 b++;
-k++;
+k++; }
 }
-}
-m++;
-}
+m++; }
 close(fd);
 free(j);
-free(t);
-}
+free(t); }
 }
 }
 }
 if (argv != 2)
-printf("were\n");
-return (0);
-}
+print_params_error();
+return (0); }
 
 
 /**
  * print_params_error - check the code
- * @params: number
+ *
  * Return: Always 0.
  */
 void print_params_error(void)

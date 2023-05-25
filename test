@@ -1,0 +1,31 @@
+while (buf[i] > 0 )
+{
+if (buf[i] != 32 || status == 1)
+{
+if (buf[i] != '$')
+{
+command[q] = buf[i];
+q++;
+printf("%c", buf[i]);
+}
+}
+if (buf[i] > 32)
+status = 1;
+if (buf[i] == '\n')
+status = 0;
+i++;
+}
+command[q++] = '\0';
+q = 0;
+while (command[q] != 32)
+{
+printf("%c", command[q]);
+q++;
+}
+t->opcode = command;
+while (command[k] != '\0')
+{
+if (command[k] != 32)
+command[k] = 32;
+k++;
+}

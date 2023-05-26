@@ -50,4 +50,5 @@ void mul(stack_t **r, unsigned int s);
 void opcode_error(char *opcode, int line);
 int check_number(char *c);
 int get_total(stack_t **j);
+void print_zero_error(char *function, int line);
 #endif

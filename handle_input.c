@@ -15,6 +15,7 @@ char *pus = "push", *pal = "pall", *pin = "pint", *po = "pop", *swa = "swap";
 char *ad = "add", *no = "nop", *su = "sub", *di = "div", *mo = "mod"; 
 char *mu = "mul";
 char *command;
+stack_t *st = *j;
 instruction_t *instruct = *instruction;
 command = instruct->opcode;
 while (command[i] >= 97 && command[i] <= 122)
@@ -85,9 +86,25 @@ fprintf(stderr, "L%d: can't sub, stack too short\n", p);
 exit(EXIT_FAILURE);
 }
 else if (strcmp(opcode, di) == 0)
+{
+if (st)
+{
+if (st->n != 0)
 instruct->f = &divv;
+else
+print_zero_error("division", p);
+}
+}
 else if (strcmp(opcode, mo) == 0)
+{
+if (st)
+{
+if (st->n != 0)
 instruct->f = &mod;
+else
+print_zero_error("division", p);
+}
+}
 else if (strcmp(opcode, mu) == 0)
 instruct->f = &mul;
 else
